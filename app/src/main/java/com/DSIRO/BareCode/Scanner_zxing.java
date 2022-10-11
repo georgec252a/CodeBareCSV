@@ -18,6 +18,14 @@ import androidx.fragment.app.FragmentTransaction;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
 public class Scanner_zxing extends AppCompatActivity implements View.OnClickListener {
 
 
@@ -108,8 +116,8 @@ public class Scanner_zxing extends AppCompatActivity implements View.OnClickList
                             pref = getSharedPreferences("sharedPref", Context.MODE_PRIVATE);
                             editor = pref.edit();
                             if (resultScan != null) {
-                                Scanner_zxing.cod_scanat_bon_piking = resultScan.substring(0, 10);
-                                editor.putString("cod_scanat_bon_piking", resultScan.substring(0, 10));
+                                Scanner_zxing.cod_scanat_bon_piking = resultScan;
+                                editor.putString("cod_scanat_bon_piking", resultScan);
                                 editor.putString("culoare_background", "none");
                                 editor.commit();
 
@@ -124,7 +132,7 @@ public class Scanner_zxing extends AppCompatActivity implements View.OnClickList
                             pref = getSharedPreferences("sharedPref", Context.MODE_PRIVATE);
                             editor = pref.edit();
                             if (resultScan != null) {
-                                Scanner_zxing.cod_scanat_eticheta_origine = resultScan.substring(0, 10);
+                                Scanner_zxing.cod_scanat_eticheta_origine = resultScan;
                                 if (cod_scanat_eticheta_origine.equals(cod_scanat_bon_piking)) {
                                     editor.putString("culoare_background", "green");
                                 } else if (!cod_scanat_eticheta_origine.equals("")) {
@@ -133,10 +141,10 @@ public class Scanner_zxing extends AppCompatActivity implements View.OnClickList
                                     editor.putString("culoare_background", "none");
                                 }
                                 if (resultScan.charAt(0) == 'P') {
-                                    editor.putString("cod_scanat_eticheta_origine", resultScan.substring(1, 11));
+                                    editor.putString("cod_scanat_eticheta_origine", resultScan);
                                     editor.putString("cod_uv", resultScan.substring(11));
                                 } else {
-                                    editor.putString("cod_scanat_eticheta_origine", resultScan.substring(0, 10));
+                                    editor.putString("cod_scanat_eticheta_origine", resultScan);
                                     editor.putString("cod_uv", resultScan.substring(10));
                                 }
                                 editor.commit();
@@ -176,7 +184,7 @@ public class Scanner_zxing extends AppCompatActivity implements View.OnClickList
             if (intentResult.getContents() == null) {
                 Toast.makeText(getBaseContext(), "Cancelled", Toast.LENGTH_SHORT).show();
             } else {
-                messageText.setText(intentResult.getContents().substring(0, 10));
+                messageText.setText(intentResult.getContents());
                 messageFormat.setText(intentResult.getFormatName());
                 resultScan = intentResult.getContents();
 
@@ -185,6 +193,8 @@ public class Scanner_zxing extends AppCompatActivity implements View.OnClickList
             super.onActivityResult(requestCode, resultCode, data);
         }
     }
+
+
 
 //**************************************************************************************
 //**************************************************************************************

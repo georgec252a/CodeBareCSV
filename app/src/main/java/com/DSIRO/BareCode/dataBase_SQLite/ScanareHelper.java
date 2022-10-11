@@ -16,8 +16,15 @@ import androidx.annotation.Nullable;
 
 import com.opencsv.CSVWriter;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,6 +42,9 @@ public class ScanareHelper extends SQLiteOpenHelper {
     private static final String TAG = "CSV";
     private static final int REQUEST_CODE_READ_CONTACTS = 1;
     private static final boolean READ_CONTACTS_GRANTED = false;
+
+    File exportDir= new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), "Dacia/BareCode");
+
     String[] permissions = new String[]{
             Manifest.permission.INTERNET,
             Manifest.permission.READ_PHONE_STATE,
@@ -108,9 +118,26 @@ public class ScanareHelper extends SQLiteOpenHelper {
         cursor.close();
         db.close();
 
+        if(exportDir!=null){
+            File fisier = new File(exportDir, "123" + ".csv");
+
+
+            String fisierStr="/sdcard/Download/Dacia/BareCode/ABC.csv";
+            FileReader fileReader = null;
+            try {
+                fileReader = new FileReader(fisierStr);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+           isCodeinCSV(fisierStr);
+
+        }
+
         return listaScanari;
 
     }
+
+
 
     public boolean deleteScanare(ScanareModel scanareModel) {
         SQLiteDatabase db = this.getReadableDatabase();
@@ -135,7 +162,7 @@ public class ScanareHelper extends SQLiteOpenHelper {
         // File exportDir = new File(Environment.getExternalStorageDirectory()., "");
 
 
-        File exportDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), "Dacia/BareCode");
+        exportDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), "Dacia/BareCode");
         // File exportDir = new File(context.getFilesDir().getPath(), "");
         //File exportDir = new File(context.getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS), "");
         Log.d(TAG, "exportDB: " + context.getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS));
@@ -147,7 +174,7 @@ public class ScanareHelper extends SQLiteOpenHelper {
         Time today = new Time(Time.getCurrentTimezone());
         today.setToNow();
 
-        File file = new File(exportDir, "export-piking_" + today.monthDay + "_" + (today.month + 1) + "_" + today.year + "_" + today.format("%k:%M:%S") + ".csv");
+        File file = new File(exportDir, "ABC" + ".csv");
         try {
 
 
@@ -182,6 +209,38 @@ public class ScanareHelper extends SQLiteOpenHelper {
         }
 
 
+    }
+
+    public boolean isCodeinCSV(String fileName){
+        List<String[]> resultList = new ArrayList<String[]>();
+        BufferedReader reader = null;
+        try {
+            reader = new BufferedReader(new FileReader(fileName));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+       
+            String csvLine = null;
+            while (true) {
+                try {
+                    if (!((csvLine = reader.readLine()) != null)) break;
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                String[] row = csvLine.split(",");
+               // resultList.add(row);
+
+                String rex = ".*123.*";
+                for ( int col = 0; col < row.length; col++ ) {    // this could be avoided
+
+                    if ( row[col].matches(rex) )
+                        resultList.add(row);
+                    return true;
+                }
+            }
+        
+       
+        return false;
     }
 
 

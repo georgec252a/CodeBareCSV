@@ -29,6 +29,14 @@ import androidx.fragment.app.Fragment;
 
 import com.DSIRO.BareCode.databinding.FragmentFirstScanBinding;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
 public class FirstScanFragment extends Fragment {
 
     private final String sharedPref = "sharedPref";
@@ -152,9 +160,20 @@ public class FirstScanFragment extends Fragment {
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), MainActivity.class);
                 intent.putExtra("fragment_to_load", 2);
+
+
+                    String fisierStr="/sdcard/Download/Dacia/BareCode/ABC.csv";
+                    if(isCodeinCSV(fisierStr))
+                        intent.putExtra("isFound", 1);
+
+
+
                 startActivity(intent);
             }
         });
+
+
+
 
 //**************************************************************************************
 //**************************************************************************************
@@ -220,6 +239,39 @@ public class FirstScanFragment extends Fragment {
         return binding.getRoot();
 
     }
+
+    public boolean isCodeinCSV(String fileName){
+        List<String[]> resultList = new ArrayList<String[]>();
+        BufferedReader reader = null;
+        try {
+            reader = new BufferedReader(new FileReader(fileName));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        String csvLine = null;
+        while (true) {
+            try {
+                if (!((csvLine = reader.readLine()) != null)) break;
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            String[] row = csvLine.split(",");
+            // resultList.add(row);
+
+            String rex = ".*123.*";
+            for ( int col = 0; col < row.length; col++ ) {    // this could be avoided
+
+                if ( row[col].matches(rex) )
+                    resultList.add(row);
+                return true;
+            }
+        }
+
+
+        return false;
+    }
+
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
