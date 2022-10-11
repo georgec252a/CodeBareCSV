@@ -1,0 +1,75 @@
+<resources>
+    <string name="app_name">Bare Code</string>
+    <string name="action_settings">Setari</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Urmatorul</string>
+    <string name="previous">Anterior</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="bar_Code_menu">Bare Code </string>
+    <string name="first_scan_fragment_title">RBare Code </string>
+    <string name="title_activity_login">Bare Code</string>
+    <string name="numar_stampila">Introduceti Nr. Stampila</string>
+    <string name="parola">Parola</string>
+    <string name="action_sign_in_Login">Conectare</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Parola</string>
+    <string name="action_sign_in">Logare</string>
+    <string name="action_sign_in_Inchidere">Inchidere</string>
+    <string name="action_sign_in_short">Logare</string>
+    <string name="welcome">"Bine ai venit !"</string>
+    <string name="invalid_username">Utilizator invalid</string>
+    <string name="invalid_stampila">Numarul de stampila introdus nu este valid!</string>
+    <string name="invalid_password">Stampila trebuie sa contina 3 cifre</string>
+    <string name="login_failed">"Eroare Logare"</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="menu_fragment_user">Utilizator Neconectat</string>
+    <string name="menu_fragment_scan_code">Apasa aici pentru Scanare cu Camera!!</string>
+    <string name="menu_fragment_stampila">Stampila:</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="first_scan_fragment_user">Utilizator Neconectat</string>
+    <string name="activity_login_introduceti_numarul">Introduceti numarul</string>
+    <string name="activity_login_stampilei_personale">stampilei personale</string>
+    <string name="menu_option">OPTIUNI</string>
+    <string name="text_receptie">1. RECEPTIE</string>
+    <string name="text_piking">2. PIKING</string>
+    <string name="text_inventar">3. INVENTAR</string>
+    <string name="text_nissan_piking">4. NISSAN(piking)</string>
+    <string name="text_inventar_nissan">5. INVENTAR NISSAN</string>
+    <string name="scanati_cod_reper_bon_piking">Scanati Cod reper bon piking:</string>
+
+    <string name="scaneaza_cod_reper_bon_piking">Scaneaza cod reper bon piking!!</string>
+    <string name="ok">OK</string>
+    <string name="inapoi">Inapoi</string>
+    <string name="export_piking">Export Piking</string>
+    <string name="stergere_date_piking">Stergere Date Piking</string>
+    <string name="cod_scanat">Cod Scanat</string>
+    <string name="bon_piking">BON PIKING</string>
+    <string name="scanati_cod_eticheta_origine">SCANATI COD ETICHETA ORIGINE</string>
+    <string name="uv">UV</string>
+    <string name="salvare_inregistrare">Salvare Inregistrare</string>
+
+    <string name="datele_au_fost_salvate_in_baza_de_date">Afisare inregistrari din baza de Date</string>
+    <string name="no_barcode_detected">No Barcode Detected</string>
+    <string name="cod_nedetectat">COD NEDETECTAT</string>
+    <string name="nu_a_fost_detectat_codul_de_bare">Nu a fost detectat codul de bare</string>
+    <string name="trimite_email">Trimite Email</string>
+    <string name="email">Email:</string>
+    <string name="subiect">Subiect</string>
+    <string name="mesaj">Mesaj</string>
+    <string name="barecode_logistic">BARECODE LOGISTIC</string>
+    <string name="_5_inventar_nissan">5. INVENTAR NISSAN</string>
+    <string name="_4_nissan_piking">4. NISSAN(piking)</string>
+    <string name="_3_inventar">3. INVENTAR</string>
+    <string name="_2_piking">2. PIKING</string>
+    <string name="_1_receptie">1. RECEPTIE</string>
+    <string name="AfisareDB">Afisare Inregistrari</string>
+    <string name="title_activity_afisare_inregistrari">AfisareInregistrari</string>
+    <string name="scan">SCAN</string>
+    <string name="activate_scanner">Activare Scanner</string>
+    <string name="Salvare">SALVARE</string>
+
+</resources>

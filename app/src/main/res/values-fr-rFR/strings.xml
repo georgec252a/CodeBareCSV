@@ -1,0 +1,76 @@
+<resources>
+    <string name="app_name">Bare Code</string>
+    <string name="action_settings">Réglages</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">Premier fragment</string>
+    <string name="second_fragment_label">Deuxième fragment</string>
+    <string name="next">Suivante</string>
+    <string name="previous">Précédente</string>
+
+    <string name="hello_first_fragment">Bonjour premier fragment</string>
+    <string name="hello_second_fragment">Bonjour deuxième fragment. Arg: %1$s</string>
+    <string name="bar_Code_menu">Bare Code </string>
+    <string name="first_scan_fragment_title">Bare Code </string>
+    <string name="title_activity_login">Bare Code</string>
+    <string name="numar_stampila">Entrez le n° Timbre</string>
+    <string name="parola">Mot de passe</string>
+    <string name="action_sign_in_Login">Connexion</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Mot de passe</string>
+    <string name="action_sign_in">Connexion</string>
+    <string name="action_sign_in_Inchidere">Déconnecter</string>
+    <string name="action_sign_in_short">Connexion</string>
+    <string name="welcome">"Bienvenue !"</string>
+    <string name="invalid_username">"Nom d'utilisateur non valide"</string>
+    <string name="invalid_stampila">Le numéro de tampon saisi est invalide !</string>
+    <string name="invalid_password">Le mot de passe doit contenir 3 charactères numeriques</string>
+    <string name="login_failed">"Échec de la connexion"</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="menu_fragment_user">Utilisateur hors ligne</string>
+    <string name="menu_fragment_scan_code">Scannez le code !!</string>
+    <string name="menu_fragment_stampila">Timbre:</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="first_scan_fragment_user">Utilisateur hors ligne</string>
+    <string name="activity_login_introduceti_numarul">Entrez le numéro</string>
+    <string name="activity_login_stampilei_personale">pour le timbre personnel</string>
+    <string name="menu_option">OPTIONS</string>
+    <string name="text_receptie">1. ACCUEIL</string>
+    <string name="text_piking">2. PIKING</string>
+    <string name="text_inventar">3. INVENTAIRE</string>
+    <string name="text_nissan_piking">4. NISSAN(piking)</string>
+    <string name="text_inventar_nissan">5. INVENTAIRE NISSAN</string>
+    <string name="barecode_logistic">BARECODE LOGISTIC</string>
+    <string name="scanati_cod_reper_bon_piking">Scannez le code du point de repère de Bon Piking :</string>
+
+    <string name="scaneaza_cod_reper_bon_piking">Scannez le code de point de repère bon piking !!</string>
+    <string name="ok">OK</string>
+    <string name="inapoi">Retour</string>
+    <string name="export_piking">Export Piking</string>
+    <string name="stergere_date_piking">Supprimer les dates de piking</string>
+    <string name="cod_scanat">Code scanné</string>
+    <string name="bon_piking">BON PIKING</string>
+    <string name="scanati_cod_eticheta_origine">"SCANNEZ LE CODE D'ÉTIQUETTE D'ORIGINE"</string>
+    <string name="uv">UV</string>
+    <string name="salvare_inregistrare">"Enregistrer l'inscription"</string>
+
+    <string name="datele_au_fost_salvate_in_baza_de_date">Les données ont été enregistrées dans la base de données</string>
+    <string name="no_barcode_detected">Aucun code-barres détecté</string>
+    <string name="cod_nedetectat">CODE NON DETECTE</string>
+    <string name="nu_a_fost_detectat_codul_de_bare">Aucun code-barres détecté</string>
+    <string name="trimite_email">Envoyer un e-mail</string>
+    <string name="email">Email:</string>
+    <string name="subiect">Sujet</string>
+    <string name="mesaj">Message</string>
+    <string name="_5_inventar_nissan">5. INVENTAIRE NISSAN</string>
+    <string name="_4_nissan_piking">4. NISSAN(piking)</string>
+    <string name="_3_inventar">3. INVENTAIRE</string>
+    <string name="_2_piking">2. PIKING</string>
+    <string name="_1_receptie">1. ACCUEIL</string>
+
+    <string name="AfisareDB">Afficher les enregistrements</string>
+    <string name="title_activity_afisare_inregistrari">Afficher les enregistrements</string>
+    <string name="scan">Scan</string>
+    <string name="activate_scanner">Activer le scanner</string>
+    <string name="Salvare">ENREGISTRER</string>
+
+</resources>

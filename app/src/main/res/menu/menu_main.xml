@@ -1,0 +1,20 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.DSIRO.BareCode.MainActivity">
+    <item
+        android:id="@+id/action_afisareDB"
+        android:orderInCategory="100"
+        android:title="@string/AfisareDB"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_export_piking"
+        android:orderInCategory="100"
+        android:title="@string/export_piking"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_stergere_piking"
+        android:orderInCategory="100"
+        android:title="@string/stergere_date_piking"
+        app:showAsAction="never" />
+</menu>

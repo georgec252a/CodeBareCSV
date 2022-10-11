@@ -1,0 +1,76 @@
+<resources>
+    <string name="app_name">Bare Code</string>
+    <string name="action_settings">Settings</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="bar_Code_menu">Bare Code </string>
+    <string name="first_scan_fragment_title">Bare Code </string>
+    <string name="title_activity_login">Bare Code</string>
+    <string name="numar_stampila">Please type Stamp Number</string>
+    <string name="parola">Password</string>
+    <string name="action_sign_in_Login">Connect</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">LogIn</string>
+    <string name="action_sign_in_Inchidere">Log Out</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_stampila">The entered stamp number is not valid!</string>
+    <string name="invalid_password">Stamp must be 3 numeric characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="menu_fragment_user">User Not Connected</string>
+    <string name="menu_fragment_scan_code">Scan Code!!</string>
+    <string name="menu_fragment_stampila">Stamp:</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="first_scan_fragment_user">User Not Connected</string>
+    <string name="activity_login_introduceti_numarul">Insert personal</string>
+    <string name="activity_login_stampilei_personale">stamp number</string>
+    <string name="menu_option">OPTIONS</string>
+    <string name="text_receptie">1. RECEPTION</string>
+    <string name="text_piking">2. PIKING</string>
+    <string name="text_inventar">3. INVENTORY</string>
+    <string name="text_nissan_piking">4. NISSAN(piking)</string>
+    <string name="text_inventar_nissan">5. INVENTORY NISSAN</string>
+    <string name="barecode_logistic">BARECODE LOGISTIC</string>
+    <string name="scanati_cod_reper_bon_piking">Scan reference code piking:</string>
+
+    <string name="scaneaza_cod_reper_bon_piking">Scan reference code piking!!</string>
+    <string name="ok">OK</string>
+    <string name="inapoi">Back</string>
+    <string name="export_piking">Export Piking</string>
+    <string name="stergere_date_piking">Delete Piking</string>
+    <string name="cod_scanat">Scanned Code</string>
+    <string name="bon_piking">PIKING Bill</string>
+    <string name="scanati_cod_eticheta_origine">SCAN CODE ORIGIN LABEL </string>
+    <string name="uv">UV</string>
+    <string name="salvare_inregistrare">Save Record</string>
+
+    <string name="datele_au_fost_salvate_in_baza_de_date">Data was saved in Data Base</string>
+    <string name="no_barcode_detected">No Barcode Detected</string>
+    <string name="cod_nedetectat">UNDETECTED CODE</string>
+    <string name="nu_a_fost_detectat_codul_de_bare">The Bare Code was not detected</string>
+    <string name="trimite_email">Send Email</string>
+    <string name="email">Email:</string>
+    <string name="subiect">Subject</string>
+    <string name="mesaj">Message</string>
+    <string name="_5_inventar_nissan">5. INVENTORY NISSAN</string>
+    <string name="_4_nissan_piking">4. NISSAN(piking)</string>
+    <string name="_3_inventar">3. INVENTORY</string>
+    <string name="_2_piking">2. PIKING</string>
+    <string name="_1_receptie">1. RECEPTION</string>
+
+    <string name="AfisareDB">Show Records</string>
+    <string name="title_activity_afisare_inregistrari">Show Records</string>
+    <string name="scan">Scan</string>
+    <string name="activate_scanner">Enable Scanner</string>
+    <string name="Salvare">SAVE</string>
+
+</resources>

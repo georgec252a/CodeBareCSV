@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/login">
+
+    <fragment
+        android:id="@+id/FirstFragment"
+        android:name="com.DSIRO.BareCode.FirstFragment"
+        android:label="@string/first_fragment_label"
+        tools:layout="@layout/fragment_first">
+
+        <action
+            android:id="@+id/action_FirstFragment_to_SecondFragment"
+            app:destination="@id/SecondFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/SecondFragment"
+        android:name="com.DSIRO.BareCode.SecondFragment"
+        android:label="@string/second_fragment_label"
+        tools:layout="@layout/fragment_second">
+
+        <action
+            android:id="@+id/action_SecondFragment_to_login"
+            app:destination="@id/login" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/login"
+        android:name="com.DSIRO.BareCode.ui.login.LoginFragment"
+        android:label="@string/title_activity_login"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_login_to_Menu_Fragment"
+            app:destination="@id/Menu_Fragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/Menu_Fragment"
+        android:name="com.DSIRO.BareCode.MenuFragment"
+        android:label="@string/bar_Code_menu"
+        tools:layout="@layout/fragment_menu">
+        <action
+            android:id="@+id/action_Menu_Fragment_to_First_Scan_Fragment"
+            app:destination="@id/First_Scan_Fragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/First_Scan_Fragment"
+        android:name="com.DSIRO.BareCode.FirstScanFragment"
+        android:label="@string/first_scan_fragment_title"
+        tools:layout="@layout/fragment_first_scan">
+        <action
+            android:id="@+id/action_FirstScanFragment_FirstFragment"
+            app:destination="@id/FirstFragment" />
+    </fragment>
+</navigation>
