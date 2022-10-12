@@ -53,6 +53,7 @@ public class FirstScanFragment extends Fragment {
     private final int EXTERNAL_STORAGE_PERMISSION_CODE = 23;
     private SharedPreferences pref;
     private SharedPreferences.Editor editor;
+    private String culoare_background;
 
     @Nullable
     @Override
@@ -74,6 +75,13 @@ public class FirstScanFragment extends Fragment {
         binding.tvCodReperScanat.setText(cod_scanat_bon_piking);
         binding.tvUser.setText(nr_stampila);
 
+        culoare_background = sharedPreferences.getString("culoare_background", "Not Found!!");
+
+        if (culoare_background.equals("green")) {
+            binding.FirstScanFragment.setBackgroundResource(R.color.green);
+        } else if (culoare_background.equals("red")) {
+            binding.FirstScanFragment.setBackgroundResource(R.color.red);
+        }
 //**************************************************************************************
 //**************************************************************************************
 //**************************************************************************************

@@ -35,6 +35,7 @@ public class Scanner_zxing extends AppCompatActivity implements View.OnClickList
     private Button okBtn;
     private TextView messageText, messageFormat;
     private String resultScan;
+    private boolean isPresent;
     private SharedPreferences pref;
     private SharedPreferences.Editor editor;
     private SharedPreferences sharedPreferences;
@@ -107,6 +108,7 @@ public class Scanner_zxing extends AppCompatActivity implements View.OnClickList
                     FragmentTransaction fTransaction = fManager.beginTransaction();
                     Intent intent;
 
+
                     switch (intentFragment) {
                         case 100:
                             intentFragment = 0;
@@ -118,7 +120,16 @@ public class Scanner_zxing extends AppCompatActivity implements View.OnClickList
                             if (resultScan != null) {
                                 Scanner_zxing.cod_scanat_bon_piking = resultScan;
                                 editor.putString("cod_scanat_bon_piking", resultScan);
-                                editor.putString("culoare_background", "none");
+
+                                String fisierStr="/sdcard/Download/Dacia/BareCode/ABC.csv";
+                                String deCautat=resultScan.substring(16,32);
+                                if(isCodeinCSV(fisierStr,deCautat)) {
+                                    //isPresent = true;
+                                    editor.putString("culoare_background", "red");
+                                }
+                                else{
+                                    editor.putString("culoare_background", "green");
+                                }
                                 editor.commit();
 
 
@@ -148,6 +159,12 @@ public class Scanner_zxing extends AppCompatActivity implements View.OnClickList
                                     editor.putString("cod_uv", resultScan.substring(10));
                                 }
                                 editor.commit();
+
+
+
+
+
+
                             }
                             break;
                     }
@@ -188,6 +205,8 @@ public class Scanner_zxing extends AppCompatActivity implements View.OnClickList
                 messageFormat.setText(intentResult.getFormatName());
                 resultScan = intentResult.getContents();
 
+
+
             }
         } else {
             super.onActivityResult(requestCode, resultCode, data);
@@ -199,5 +218,40 @@ public class Scanner_zxing extends AppCompatActivity implements View.OnClickList
 //**************************************************************************************
 //**************************************************************************************
 //**************************************************************************************
+
+
+    public boolean isCodeinCSV(String fileName,String deCautat){
+        List<String[]> resultList = new ArrayList<String[]>();
+        BufferedReader reader = null;
+        try {
+            reader = new BufferedReader(new FileReader(fileName));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        String csvLine = null;
+        while (true) {
+            try {
+                if (!((csvLine = reader.readLine()) != null)) break;
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            String[] row = csvLine.split(",");
+            // resultList.add(row);
+
+//            String rex = ".*"+deCautat+".*";
+            String rex = deCautat;
+            for ( int col = 0; col < row.length; col++ ) {    // this could be avoided
+
+                if ( row[col].contains(rex) ) {
+                    resultList.add(row);
+                    return true;
+                }
+            }
+        }
+
+
+        return false;
+    }
 
 }
