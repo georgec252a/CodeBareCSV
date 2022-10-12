@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.Layout;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -11,6 +13,7 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintSet;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -39,11 +42,23 @@ public class Scanner_zxing extends AppCompatActivity implements View.OnClickList
     private SharedPreferences pref;
     private SharedPreferences.Editor editor;
     private SharedPreferences sharedPreferences;
+    private View layout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scanner_zxing);
+
+       layout=findViewById(R.id.ScannerZxingLayout);
+
+        if (isPresent==false) {
+
+            layout.setBackgroundResource(R.color.green);
+
+        } else if (isPresent) {
+
+            layout.setBackgroundResource(R.color.red);
+        }
 
 
 //**************************************************************************************
@@ -87,6 +102,22 @@ public class Scanner_zxing extends AppCompatActivity implements View.OnClickList
 //**************************************************************************************
 //**************************************************************************************
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        layout=findViewById(R.id.ScannerZxingLayout);
+
+        if (isPresent==false) {
+
+            layout.setBackgroundResource(R.color.green);
+
+        } else if (isPresent) {
+
+            layout.setBackgroundResource(R.color.red);
+        }
     }
 
     @Override
@@ -203,7 +234,21 @@ public class Scanner_zxing extends AppCompatActivity implements View.OnClickList
             } else {
                 messageText.setText(intentResult.getContents());
                 messageFormat.setText(intentResult.getFormatName());
-                resultScan = intentResult.getContents();
+//                resultScan = intentResult.getContents();
+                resultScan = intentResult.getContents().substring(16,32);
+
+//                String fisierStr="/sdcard/Download/Dacia/BareCode/ABC.csv";
+                String fisierStr="/sdcard/Download/Dacia/BareCode/DB_codes.txt";
+                String deCautat=resultScan;
+
+                if(isCodeinCSV(fisierStr,deCautat)) {
+                    isPresent = true;
+                   // editor.putString("culoare_background", "red");
+                }
+                else{
+                    isPresent = false;
+                   // editor.putString("culoare_background", "green");
+                }
 
 
 
