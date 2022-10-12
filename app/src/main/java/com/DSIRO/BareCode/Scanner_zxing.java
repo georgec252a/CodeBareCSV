@@ -127,6 +127,10 @@ public class Scanner_zxing extends AppCompatActivity implements View.OnClickList
                 alertaText.setText("DE TRIMIS LA ATELIER!!!");
             }
         }
+        else{
+            layout.setBackgroundResource(R.color.white);
+            alertaText.setVisibility(View.INVISIBLE);
+        }
     }
 
     @Override
@@ -262,9 +266,10 @@ public class Scanner_zxing extends AppCompatActivity implements View.OnClickList
                     }
                     scanareOK = true;
                 }
-                else
-                    resultScan=intentResult.getContents();
-
+                else {
+                    resultScan = intentResult.getContents();
+                    scanareOK = false;
+                }
 
             }
         } else {

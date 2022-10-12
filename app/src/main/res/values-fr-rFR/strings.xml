@@ -9,9 +9,9 @@
 
     <string name="hello_first_fragment">Bonjour premier fragment</string>
     <string name="hello_second_fragment">Bonjour deuxième fragment. Arg: %1$s</string>
-    <string name="bar_Code_menu">Bare Code </string>
-    <string name="first_scan_fragment_title">Bare Code </string>
-    <string name="title_activity_login">Bare Code</string>
+    <string name="bar_Code_menu">QR Code Verifier</string>
+    <string name="first_scan_fragment_title">QR Code Verifier </string>
+    <string name="title_activity_login">QR Code Verifier</string>
     <string name="numar_stampila">Entrez le n° Timbre</string>
     <string name="parola">Mot de passe</string>
     <string name="action_sign_in_Login">Connexion</string>

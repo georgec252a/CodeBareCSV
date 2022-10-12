@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Bare Code</string>
+    <string name="app_name">QR Code Verifier</string>
     <string name="action_settings">Setari</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
@@ -9,9 +9,9 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
-    <string name="bar_Code_menu">Bare Code </string>
-    <string name="first_scan_fragment_title">RBare Code </string>
-    <string name="title_activity_login">Bare Code</string>
+    <string name="bar_Code_menu">QR Code Verifier</string>
+    <string name="first_scan_fragment_title">QR Code Verifier</string>
+    <string name="title_activity_login">QR Code Verifier</string>
     <string name="numar_stampila">Introduceti Nr. Stampila</string>
     <string name="parola">Parola</string>
     <string name="action_sign_in_Login">Conectare</string>
