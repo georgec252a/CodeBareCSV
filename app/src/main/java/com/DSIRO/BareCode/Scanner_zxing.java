@@ -118,7 +118,7 @@ public class Scanner_zxing extends AppCompatActivity implements View.OnClickList
 
                 layout.setBackgroundResource(R.color.red);
                 alertaText.setVisibility(View.VISIBLE);
-                alertaText.setText("NU SE TRIMITE”");
+                alertaText.setText("NU SE TRIMITE");
 
             } else if (isPresent) {
 
@@ -157,7 +157,7 @@ public class Scanner_zxing extends AppCompatActivity implements View.OnClickList
                             startActivity(intent);
                             pref = getSharedPreferences("sharedPref", Context.MODE_PRIVATE);
                             editor = pref.edit();
-                            if (resultScan != null) {
+                            if (resultScan != null && resultScan.length()>=30) {
                                 Scanner_zxing.cod_scanat_bon_piking = resultScan;
                                 editor.putString("cod_scanat_bon_piking", resultScan);
 
@@ -244,23 +244,26 @@ public class Scanner_zxing extends AppCompatActivity implements View.OnClickList
                 messageText.setText(intentResult.getContents());
                 messageFormat.setText(intentResult.getFormatName());
 //                resultScan = intentResult.getContents();
-                resultScan = intentResult.getContents().substring(16,32);
+                if(intentResult.getContents().length()>31) {
+                    resultScan = intentResult.getContents().substring(16, 32);
+
 
 //                String fisierStr="/sdcard/Download/Dacia/BareCode/ABC.csv";
-                String fisierStr="/sdcard/Download/Dacia/BareCode/DB_codes.txt";
-                String deCautat=resultScan;
+                    String fisierStr = "/sdcard/Download/Dacia/BareCode/DB_codes.txt";
+                    String deCautat = resultScan;
 
-                if(isCodeinCSV(fisierStr,deCautat)) {
-                    isPresent = true;
+                    if (isCodeinCSV(fisierStr, deCautat)) {
+                        isPresent = true;
 
-                   // editor.putString("culoare_background", "red");
+                        // editor.putString("culoare_background", "red");
+                    } else {
+                        isPresent = false;
+                        // editor.putString("culoare_background", "green");
+                    }
+                    scanareOK = true;
                 }
-                else{
-                    isPresent = false;
-                   // editor.putString("culoare_background", "green");
-                }
-                scanareOK=true;
-
+                else
+                    resultScan=intentResult.getContents();
 
 
             }

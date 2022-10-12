@@ -9,12 +9,15 @@
 
     <Button
         android:id="@+id/scan_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="342dp"
+        android:layout_height="118dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="76dp"
+        android:layout_marginBottom="88dp"
         android:text="@string/scan"
-        app:layout_constraintStart_toStartOf="@+id/scan_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.42"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/scan_content" />
 
     <TextView
@@ -23,22 +26,28 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/scan_button"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="205dp"
+        android:layout_marginTop="264dp"
         android:text="Scan Format"
         android:textIsSelectable="true"
+        android:visibility="invisible"
         app:layout_constraintStart_toStartOf="@+id/scan_content"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/scan_content"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="35dp"
         android:layout_below="@id/scan_format"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="121dp"
-        android:layout_marginTop="89dp"
+        android:layout_marginStart="29dp"
+        android:layout_marginTop="164dp"
+        android:layout_marginEnd="29dp"
+        android:layout_marginBottom="21dp"
         android:text="Scan Content"
         android:textIsSelectable="true"
+        app:layout_constraintBottom_toTopOf="@+id/scan_button"
+        app:layout_constraintEnd_toEndOf="@+id/alerta_text"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/scan_format" />
 
@@ -47,19 +56,29 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="69dp"
+        android:layout_marginBottom="274dp"
         android:text="OK"
         android:visibility="invisible"
-        app:layout_constraintBaseline_toBaselineOf="@+id/scan_button"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/alerta_text" />
 
     <TextView
         android:id="@+id/alerta_text"
-        android:layout_width="324dp"
-        android:layout_height="71dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="42dp"
+        android:layout_marginTop="83dp"
+        android:layout_marginEnd="42dp"
+        android:layout_marginBottom="315dp"
         android:text="TextView"
-        android:textSize="34sp"
+        android:textSize="48sp"
+        android:textStyle="bold"
         android:visibility="invisible"
-        tools:layout_editor_absoluteX="42dp"
-        tools:layout_editor_absoluteY="83dp" />
+        app:layout_constraintBottom_toTopOf="@+id/scan_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.52"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
