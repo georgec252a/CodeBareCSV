@@ -1,11 +1,8 @@
 package com.DSIRO.BareCode;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.text.Layout;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -13,16 +10,11 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintSet;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -36,9 +28,9 @@ public class Scanner_zxing extends AppCompatActivity implements View.OnClickList
     private static String cod_scanat_eticheta_origine;
     private Button scanBtn;
     private Button okBtn;
-    private TextView messageText, messageFormat,alertaText;
+    private TextView messageText, messageFormat, alertaText;
     private String resultScan;
-    private boolean isPresent,scanareOK;
+    private boolean isPresent, scanareOK;
     private SharedPreferences pref;
     private SharedPreferences.Editor editor;
     private SharedPreferences sharedPreferences;
@@ -49,11 +41,11 @@ public class Scanner_zxing extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scanner_zxing);
 
-       layout=findViewById(R.id.ScannerZxingLayout);
-        alertaText=findViewById(R.id.alerta_text);
+        layout = findViewById(R.id.ScannerZxingLayout);
+        alertaText = findViewById(R.id.alerta_text);
         alertaText.setVisibility(View.INVISIBLE);
 
-        if (isPresent==false) {
+        if (isPresent == false) {
 
             layout.setBackgroundResource(R.color.green);
 
@@ -76,44 +68,16 @@ public class Scanner_zxing extends AppCompatActivity implements View.OnClickList
         okBtn.setOnClickListener(this);
 
 
-//        new Handler().postDelayed(new Runnable() {
-//
-//            @Override
-//            public void run() {
-//
-//
-//
-//                if(resultScan==null) {
-//
-//                    IntentIntegrator intentIntegrator = new IntentIntegrator(Scanner_zxing.this);
-//                    intentIntegrator.setPrompt("Scan a barcode or QR Code");
-//                    intentIntegrator.setOrientationLocked(true);
-//                    intentIntegrator.initiateScan();
-//                }else {
-//                    okBtn.performClick();
-//
-//                }
-//
-//
-//            }
-//
-//        }, 500);
-
-
-//**************************************************************************************
-//**************************************************************************************
-//**************************************************************************************
-
     }
 
     @Override
     protected void onResume() {
         super.onResume();
 
-        layout=findViewById(R.id.ScannerZxingLayout);
-        alertaText=findViewById(R.id.alerta_text);
+        layout = findViewById(R.id.ScannerZxingLayout);
+        alertaText = findViewById(R.id.alerta_text);
 
-        if(scanareOK) {
+        if (scanareOK) {
             if (isPresent == false) {
 
                 layout.setBackgroundResource(R.color.red);
@@ -126,8 +90,7 @@ public class Scanner_zxing extends AppCompatActivity implements View.OnClickList
                 alertaText.setVisibility(View.VISIBLE);
                 alertaText.setText("DE TRIMIS LA ATELIER!!!");
             }
-        }
-        else{
+        } else {
             layout.setBackgroundResource(R.color.white);
             alertaText.setVisibility(View.INVISIBLE);
         }
@@ -142,79 +105,6 @@ public class Scanner_zxing extends AppCompatActivity implements View.OnClickList
 
         switch (v.getId()) {
 
-            case R.id.okButton: {
-
-                if (getIntent().getExtras() != null) {
-                    int intentFragment = getIntent().getExtras().getInt("fragment_origin");
-                    Fragment fragment;
-                    Bundle args = new Bundle();
-                    FragmentManager fManager = getSupportFragmentManager();
-                    FragmentTransaction fTransaction = fManager.beginTransaction();
-                    Intent intent;
-
-
-                    switch (intentFragment) {
-                        case 100:
-                            intentFragment = 0;
-                            intent = new Intent(Scanner_zxing.this, MainActivity.class);
-                            intent.putExtra("fragment_to_load", 1);
-                            startActivity(intent);
-                            pref = getSharedPreferences("sharedPref", Context.MODE_PRIVATE);
-                            editor = pref.edit();
-                            if (resultScan != null && resultScan.length()>=30) {
-                                Scanner_zxing.cod_scanat_bon_piking = resultScan;
-                                editor.putString("cod_scanat_bon_piking", resultScan);
-
-                                String fisierStr="/sdcard/Download/Dacia/BareCode/ABC.csv";
-                                String deCautat=resultScan.substring(16,32);
-                                if(isCodeinCSV(fisierStr,deCautat)) {
-                                    //isPresent = true;
-                                    editor.putString("culoare_background", "red");
-                                }
-                                else{
-                                    editor.putString("culoare_background", "green");
-                                }
-                                editor.commit();
-
-
-                            }
-                            break;
-                        case 200:
-                            intentFragment = 0;
-                            intent = new Intent(Scanner_zxing.this, MainActivity.class);
-                            intent.putExtra("fragment_to_load", 2);
-                            startActivity(intent);
-                            pref = getSharedPreferences("sharedPref", Context.MODE_PRIVATE);
-                            editor = pref.edit();
-                            if (resultScan != null) {
-                                Scanner_zxing.cod_scanat_eticheta_origine = resultScan;
-                                if (cod_scanat_eticheta_origine.equals(cod_scanat_bon_piking)) {
-                                    editor.putString("culoare_background", "green");
-                                } else if (!cod_scanat_eticheta_origine.equals("")) {
-                                    editor.putString("culoare_background", "red");
-                                } else if (cod_scanat_eticheta_origine.equals("")) {
-                                    editor.putString("culoare_background", "none");
-                                }
-                                if (resultScan.charAt(0) == 'P') {
-                                    editor.putString("cod_scanat_eticheta_origine", resultScan);
-                                    editor.putString("cod_uv", resultScan.substring(11));
-                                } else {
-                                    editor.putString("cod_scanat_eticheta_origine", resultScan);
-                                    editor.putString("cod_uv", resultScan.substring(10));
-                                }
-                                editor.commit();
-
-
-
-
-
-
-                            }
-                            break;
-                    }
-                    break;
-                }
-            }
 
             case R.id.scan_button: {
                 IntentIntegrator intentIntegrator = new IntentIntegrator(this);
@@ -247,26 +137,23 @@ public class Scanner_zxing extends AppCompatActivity implements View.OnClickList
             } else {
                 messageText.setText(intentResult.getContents());
                 messageFormat.setText(intentResult.getFormatName());
-//                resultScan = intentResult.getContents();
-                if(intentResult.getContents().length()>31) {
+                if (intentResult.getContents().length() > 31) {
                     resultScan = intentResult.getContents().substring(16, 32);
 
 
-//                String fisierStr="/sdcard/Download/Dacia/BareCode/ABC.csv";
                     String fisierStr = "/sdcard/Download/Dacia/BareCode/DB_codes.txt";
                     String deCautat = resultScan;
 
                     if (isCodeinCSV(fisierStr, deCautat)) {
                         isPresent = true;
 
-                        // editor.putString("culoare_background", "red");
+
                     } else {
                         isPresent = false;
-                        // editor.putString("culoare_background", "green");
+
                     }
                     scanareOK = true;
-                }
-                else {
+                } else {
                     resultScan = intentResult.getContents();
                     scanareOK = false;
                 }
@@ -278,13 +165,12 @@ public class Scanner_zxing extends AppCompatActivity implements View.OnClickList
     }
 
 
-
 //**************************************************************************************
 //**************************************************************************************
 //**************************************************************************************
 
 
-    public boolean isCodeinCSV(String fileName,String deCautat){
+    public boolean isCodeinCSV(String fileName, String deCautat) {
         List<String[]> resultList = new ArrayList<String[]>();
         BufferedReader reader = null;
         try {
@@ -303,11 +189,10 @@ public class Scanner_zxing extends AppCompatActivity implements View.OnClickList
             String[] row = csvLine.split(",");
             // resultList.add(row);
 
-//            String rex = ".*"+deCautat+".*";
             String rex = deCautat;
-            for ( int col = 0; col < row.length; col++ ) {    // this could be avoided
+            for (int col = 0; col < row.length; col++) {
 
-                if ( row[col].contains(rex) ) {
+                if (row[col].contains(rex)) {
                     resultList.add(row);
                     return true;
                 }
