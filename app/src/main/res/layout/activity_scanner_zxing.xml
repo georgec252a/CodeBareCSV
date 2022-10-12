@@ -52,4 +52,14 @@
         app:layout_constraintBaseline_toBaselineOf="@+id/scan_button"
         app:layout_constraintEnd_toEndOf="parent" />
 
+    <TextView
+        android:id="@+id/alerta_text"
+        android:layout_width="324dp"
+        android:layout_height="71dp"
+        android:text="TextView"
+        android:textSize="34sp"
+        android:visibility="invisible"
+        tools:layout_editor_absoluteX="42dp"
+        tools:layout_editor_absoluteY="83dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

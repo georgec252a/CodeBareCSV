@@ -36,9 +36,9 @@ public class Scanner_zxing extends AppCompatActivity implements View.OnClickList
     private static String cod_scanat_eticheta_origine;
     private Button scanBtn;
     private Button okBtn;
-    private TextView messageText, messageFormat;
+    private TextView messageText, messageFormat,alertaText;
     private String resultScan;
-    private boolean isPresent;
+    private boolean isPresent,scanareOK;
     private SharedPreferences pref;
     private SharedPreferences.Editor editor;
     private SharedPreferences sharedPreferences;
@@ -50,6 +50,8 @@ public class Scanner_zxing extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.activity_scanner_zxing);
 
        layout=findViewById(R.id.ScannerZxingLayout);
+        alertaText=findViewById(R.id.alerta_text);
+        alertaText.setVisibility(View.INVISIBLE);
 
         if (isPresent==false) {
 
@@ -109,14 +111,21 @@ public class Scanner_zxing extends AppCompatActivity implements View.OnClickList
         super.onResume();
 
         layout=findViewById(R.id.ScannerZxingLayout);
+        alertaText=findViewById(R.id.alerta_text);
 
-        if (isPresent==false) {
+        if(scanareOK) {
+            if (isPresent == false) {
 
-            layout.setBackgroundResource(R.color.green);
+                layout.setBackgroundResource(R.color.red);
+                alertaText.setVisibility(View.VISIBLE);
+                alertaText.setText("NU SE TRIMITE”");
 
-        } else if (isPresent) {
+            } else if (isPresent) {
 
-            layout.setBackgroundResource(R.color.red);
+                layout.setBackgroundResource(R.color.green);
+                alertaText.setVisibility(View.VISIBLE);
+                alertaText.setText("DE TRIMIS LA ATELIER!!!");
+            }
         }
     }
 
@@ -243,12 +252,14 @@ public class Scanner_zxing extends AppCompatActivity implements View.OnClickList
 
                 if(isCodeinCSV(fisierStr,deCautat)) {
                     isPresent = true;
+
                    // editor.putString("culoare_background", "red");
                 }
                 else{
                     isPresent = false;
                    // editor.putString("culoare_background", "green");
                 }
+                scanareOK=true;
 
 
 
